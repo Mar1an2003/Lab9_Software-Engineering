@@ -17,7 +17,13 @@ def encode(password): # my implemented
     pass
 
 
-def decode(): # my partner implemented
+def decode(password): # my partner implemented
+    password_decoded = ''
+    for i in password:
+        i_add = int(i) + 7
+        i_mod = i_add % 10
+        password_decoded = password_decoded + str(i_mod)
+    return password_decoded
     pass
 
 
@@ -43,7 +49,7 @@ def main(): # the function
 
         elif option == 2: # Decode
 
-            print(f"The encoded password is ----,and the original password is ----.")
+            print(f"The encoded password is {password},and the original password is {decode(password)}.")
 
         elif option == 3: # Quit
             break
