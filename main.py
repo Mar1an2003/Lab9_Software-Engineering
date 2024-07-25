@@ -1,6 +1,7 @@
 def password_read():
     try:
-        password = int(input("Please enter your password to encode: "))
+        password = input("Please enter your password to encode: ")
+        val = int(password)
         return str(password)
     except ValueError:
         print("Please enter a valid password.")
@@ -35,13 +36,21 @@ def display_menu():  # this is the Menu display
     print("3. Quit")
 
 
+def menu_option():
+    try:
+        display_menu()
+        return int(input("Please enter an option: "))
+    except ValueError:
+        return -1 #Invalid
+
+
+
 def main(): # the function
     password = ""
 
     while True:
-        display_menu()
 
-        option = int(input("Enter your choice: "))
+        option = menu_option()
 
         if option == 1: # Encode
             password = encode(password_read())
