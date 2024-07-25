@@ -1,16 +1,25 @@
-# it works
+def password_read():
+    try:
+        password = int(input("Please enter your password to encode: "))
+        return str(password)
+    except ValueError:
+        print("Please enter a valid password.")
+        return password_read()
 
 
 def encode(password): # my implemented
-
+    password_encoded = ''
+    for i in password:
+        i_add = int(i)+3
+        i_mod = i_add % 10
+        password_encoded = password_encoded + str(i_mod)
+    return password_encoded
     pass
 
 
 def decode(): # my partner implemented
     pass
 
-
-password = 0
 
 def display_menu():  # this is the Menu display
     print('\nMenu\n'
@@ -21,23 +30,23 @@ def display_menu():  # this is the Menu display
 
 
 def main(): # the function
+    password = ""
 
     while True:
         display_menu()
-        option_menu = int(input("Please enter an option: "))
 
-        if option_menu == 1: # Encode
-            password_encode = int(input("Please enter your password to encode: "))
+        option = int(input("Enter your choice: "))
+
+        if option == 1: # Encode
+            password = encode(password_read())
             print("Your password has been encoded and stored!")
 
-        elif option_menu == 2: # Decode
+        elif option == 2: # Decode
 
             print(f"The encoded password is ----,and the original password is ----.")
 
-        elif option_menu == 3: # Quit
+        elif option == 3: # Quit
             break
 
 if __name__ == '__main__':
     main()
-
-
